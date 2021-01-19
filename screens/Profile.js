@@ -2,13 +2,13 @@ import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View, Text, Button } from 'react-native';
 
-const Home = ({navigation}) => {
+const Profile = ({navigation}) => {
 
     return (
         <View style={styles.container}>
-            <Text>Sup!</Text>
+            <Text>Profile!</Text>
             <StatusBar style="auto" />
-            <Button title="diff screen" onPress={() => navigation.navigate("Diff")}/>
+            {/* <Button title="diff screen" onPress={() => navigation.navigate("Diff")}/> */}
         </View>
     );
 }
@@ -22,4 +22,4 @@ const styles = StyleSheet.create({
     },
   });
 
-export default Home
+export default Profile

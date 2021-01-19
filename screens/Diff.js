@@ -2,7 +2,7 @@ import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View, Text, Button } from 'react-native';
 
-export default function Diff({navigation})  {
+const Diff = ({navigation}) => {
 
     return (
         <View style={styles.container}>
@@ -21,3 +21,5 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
     },
   });
+
+export default Diff;
