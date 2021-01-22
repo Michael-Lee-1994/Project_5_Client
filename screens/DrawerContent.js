@@ -16,7 +16,8 @@ import {
 } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-
+// import 
+import deviceStorage from '../redux/deviceStorage'
 
 export function DrawerContent(props) {
     return(
@@ -114,7 +115,10 @@ export function DrawerContent(props) {
                     />
                 )}
                 label="Sign Out"
-                onPress={() => {}}
+                onPress={() => {
+                    deviceStorage.deleteJWT()
+                    props.navigation.navigate("auth")
+                }}
                 />
             </Drawer.Section>
         </View>

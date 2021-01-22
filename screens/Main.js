@@ -2,22 +2,31 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { connect } from 'react-redux'
 
-//helpers
+//Actions
+import { onUserLogin, onSignUp } from "../redux/actions";
+
+//Helpers
 const HomeStack = createStackNavigator()
 const DiffStack = createStackNavigator()
 const ProfileStack = createStackNavigator()
 const SearchStack = createStackNavigator()
 const Tab = createMaterialBottomTabNavigator()
 
-//screens
+//Screens
 import Home from "./Home"
 import Diff from "./Diff"
 import Search from "./Search"
 import Profile from "./Profile"
 
-//functions
-const HomeStackScreen = ({navigation}) => {
+//Functions
+const mapStateToProps = (state) => ({
+  authReducer: state.authReducer
+})
+
+const HomeStackScreen = ({navigation, props}) => {
+  console.log("my props",onUserLogin)
     return(
       <HomeStack.Navigator screenOptions={{
         headerStyle: {
@@ -102,59 +111,60 @@ const SearchStackScreen = ({navigation}) => {
     )
 }
 
-  const Main = () => (
-    <Tab.Navigator
-        initialRouteName="Home"
-        tabBarOptions={{
-          activeTintColor: '#e91e63',
-        }}
-      >
-        <Tab.Screen
-          name="Home"
-          component={HomeStackScreen}
-          options={{
-            tabBarLabel: 'Home',
-            tabBarColor: '#009387',
-            tabBarIcon: ({ color, size= 25 }) => (
-              <Icon name="ios-home" color={color} size={size} />
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="Diff"
-          component={DiffStackScreen}
-          options={{
-            tabBarLabel: 'Diff',
-            tabBarColor: '#e3cf17',
-            tabBarIcon: ({ color, size= 25 }) => (
-              <Icon name="ios-library" color={color} size={size} />
-            ),
-            tabBarBadge: 3
-          }}
-        />
-        <Tab.Screen
-          name="Profile"
-          component={ProfileStackScreen}
-          options={{
-            tabBarLabel: 'Profile',
-            tabBarColor: '#ffa6b9',
-            tabBarIcon: ({ color, size= 25 }) => (
-              <Icon name="ios-person" color={color} size={size} />
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="Search"
-          component={SearchStackScreen}
-          options={{
-            tabBarLabel: 'Search',
-            tabBarColor: '#210eed',
-            tabBarIcon: ({ color, size= 25 }) => (
-              <Icon name="ios-search" color={color} size={size} />
-            ),
-          }}
-        />
-      </Tab.Navigator>
-  )
+const _Main = () => (
+  <Tab.Navigator
+    initialRouteName="Home"
+    tabBarOptions={{
+      activeTintColor: '#e91e63',
+    }}
+  >
+  <Tab.Screen
+    name="Home"
+    component={HomeStackScreen}
+    options={{
+      tabBarLabel: 'Home',
+      tabBarColor: '#009387',
+      tabBarIcon: ({ color, size= 25 }) => (
+        <Icon name="ios-home" color={color} size={size} />
+        ),
+      }}
+  />
+  <Tab.Screen
+    name="Diff"
+    component={DiffStackScreen}
+    options={{
+      tabBarLabel: 'Diff',
+      tabBarColor: '#e3cf17',
+      tabBarIcon: ({ color, size= 25 }) => (
+        <Icon name="ios-library" color={color} size={size} />
+      ),
+      tabBarBadge: 3
+    }}
+  />
+  <Tab.Screen
+    name="Profile"
+    component={ProfileStackScreen}
+    options={{
+      tabBarLabel: 'Profile',
+      tabBarColor: '#ffa6b9',
+      tabBarIcon: ({ color, size= 25 }) => (
+        <Icon name="ios-person" color={color} size={size} />
+      ),
+    }}
+  />
+  <Tab.Screen
+    name="Search"
+    component={SearchStackScreen}
+    options={{
+      tabBarLabel: 'Search',
+      tabBarColor: '#210eed',
+      tabBarIcon: ({ color, size= 25 }) => (
+        <Icon name="ios-search" color={color} size={size} />
+      ),
+    }}
+  />
+</Tab.Navigator>
+)
 
-  export default Main;
+const Main = connect(mapStateToProps, {onSignUp, onUserLogin})(_Main)
+export default Main;
