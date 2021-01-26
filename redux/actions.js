@@ -1,5 +1,6 @@
 import axios from 'axios'
 import deviceStorage from './deviceStorage'
+import { OMDB_API_KEY } from '../variables'
 
 export const onUserLogin = (username, password) => {
     console.log("from redux actions",username, password)
@@ -175,7 +176,8 @@ export const logout = () => {
 
 export const search = (value, page) => {
     let convertedValue = value.split(" ").join("+")
-    let APIKEY="86ec8bf4"
+    let APIKEY = OMDB_API_KEY()
+    // const APIKEY = process.env.EXPO_OMDB_API_KEY
     return async dispatch => {
         try {
             let response = await axios.get('http://www.omdbapi.com?apikey=' + APIKEY + `&s=${convertedValue}`+ `&page=${page}`)
