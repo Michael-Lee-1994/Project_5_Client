@@ -13,9 +13,9 @@ import SignUp from './SignUp';
 //Actions
 import { onSignUp } from "../redux/actions";
 
-// const mapStateToProps = (state) => ({
-//     authReducer: state.authReducer
-// })
+const mapStateToProps = (state) => ({
+    authReducer: state.authReducer
+})
 
 // class _Auth extends Component {
 const _Auth = ({ navigation }) => {
@@ -39,9 +39,9 @@ const _Auth = ({ navigation }) => {
 }
 
 // const Auth = connect(mapStateToProps)(_Auth)
-// const Auth = connect(mapStateToProps, {onSignUp})(_Auth)
+const Auth = connect(mapStateToProps, {onSignUp})(_Auth)
 
-export default _Auth;
+export default Auth;
 
 
 

@@ -16,11 +16,17 @@ import {
 } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-// import 
-import deviceStorage from '../redux/deviceStorage'
+import { logout } from '../redux/actions'
+import { connect } from 'react-redux'
 
-export function DrawerContent(props) {
-    return(
+const mapStateToProps = (state) => ({
+    authReducer: state.authReducer,
+    currentUser: state.authReducer.currentUser
+})
+
+const _DrawerContent = (props) => {
+
+    return (
         <View style={{flex:1}}>
             <DrawerContentScrollView {...props}>
                 <View style= {styles.drawerContent}>
@@ -28,16 +34,16 @@ export function DrawerContent(props) {
                         <View style={{flexDirection: 'row', marginTop: 15}}>
                             <Avatar.Image 
                             source={{
-                                uri: "https://www.treehugger.com/thmb/qvxotkCqbVXCkb9dlidm4NexKtU=/768x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__mnn__images__2017__04__lop-earred-rabbit-d47323a1ab3847398463b3d6a1d7119b.jpg"
+                                uri: props.currentUser ? props.currentUser.img_url : ""
                             }}
                             size={50}
                             />
                             <View style={{flexDirection: 'column', marginLeft:15}}>
                                 <Title style={styles.title}>
-                                Name Name
+                                {props.currentUser ? props.currentUser.first_name + " " + props.currentUser.last_name : null}
                                </Title>
                                <Caption style={styles.caption}>
-                                   Caption Caption
+                                   {props.currentUser ? `#${props.currentUser.username}` : null}
                                </Caption>
                             </View>
                         </View>
@@ -116,14 +122,18 @@ export function DrawerContent(props) {
                 )}
                 label="Sign Out"
                 onPress={() => {
-                    deviceStorage.deleteJWT()
-                    props.navigation.navigate("auth")
+                    props.logout()
+                    // props.navigation.reset()
                 }}
                 />
             </Drawer.Section>
         </View>
     )
 }
+
+const DrawerContent = connect(mapStateToProps, { logout })(_DrawerContent)
+
+export default DrawerContent;
 
 const styles = StyleSheet.create({
     drawerContent: {

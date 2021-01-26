@@ -26,7 +26,7 @@ const mapStateToProps = (state) => ({
 })
 
 const HomeStackScreen = ({navigation, props}) => {
-  console.log("my props",onUserLogin)
+  // console.log("my props",onUserLogin)
     return(
       <HomeStack.Navigator screenOptions={{
         headerStyle: {
@@ -129,6 +129,17 @@ const _Main = () => (
         ),
       }}
   />
+   <Tab.Screen
+    name="Search"
+    component={SearchStackScreen}
+    options={{
+      tabBarLabel: 'Search',
+      tabBarColor: '#210eed',
+      tabBarIcon: ({ color, size= 25 }) => (
+        <Icon name="ios-search" color={color} size={size} />
+      ),
+    }}
+  />
   <Tab.Screen
     name="Diff"
     component={DiffStackScreen}
@@ -149,17 +160,6 @@ const _Main = () => (
       tabBarColor: '#ffa6b9',
       tabBarIcon: ({ color, size= 25 }) => (
         <Icon name="ios-person" color={color} size={size} />
-      ),
-    }}
-  />
-  <Tab.Screen
-    name="Search"
-    component={SearchStackScreen}
-    options={{
-      tabBarLabel: 'Search',
-      tabBarColor: '#210eed',
-      tabBarIcon: ({ color, size= 25 }) => (
-        <Icon name="ios-search" color={color} size={size} />
       ),
     }}
   />

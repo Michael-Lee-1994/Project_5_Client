@@ -5,39 +5,24 @@ import { LinearGradient }  from 'expo-linear-gradient';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather'
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { connect } from 'react-redux'
 
-//Context
-import { AuthContext } from '../components/context'
-// import { TextInput } from 'react-native-paper';
+//Actions
+import { authReducer } from '../redux/reducers/authReducer';
+import { onUserLogin } from "../redux/actions";
 
-// class Login extends Component {
-    // constructor(props) {
-    //     super(props)
+const mapStateToProps = (state) => ({
+    authReducer: state.authReducer
+})
 
-    //     this.state = {
-    //         username: "",
-    //         password: "",
-    //         hiddenPassword: true
-    //     }
-    // }
-    // componentDidMount() {
-    //     this.setState({
-    //         username:"",
-    //         password: "",
-    //         hiddenPassword: true
-    //     })
-    // }
-    // render() {
-    // }
-
-const Login = ({ navigation }) => {
+const _Login = ({ navigation, onUserLogin }) => {
     const [data, setData] = React.useState({
         username: "",
         password: "",
         secureTextEntry: true
     })
 
-    const { login } = React.useContext(AuthContext);
+    // const { login } = React.useContext(AuthContext);
 
     const userInputChange = (username) => {
         setData({
@@ -128,12 +113,13 @@ const Login = ({ navigation }) => {
                     </TouchableOpacity>
                 </View>
                     
-                <Button title="Login" onPress={() => navigation.navigate("HomeDrawer")}></Button>
+                <Button title="Login" onPress={() => {onUserLogin(data.username, data.password)}}></Button>
                 <Button title="Sign Up" onPress={() => navigation.navigate("SignUpScreen")}></Button>
             </View>
         </View>
     )
 };
+const Login = connect(mapStateToProps, {onUserLogin} )(_Login)
 
 export default Login;
 
