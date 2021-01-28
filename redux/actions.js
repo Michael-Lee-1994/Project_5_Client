@@ -174,13 +174,19 @@ export const logout = () => {
     }
 }
 
-export const search = (value, page) => {
+export const search = (value, page, type) => {
     let convertedValue = value.split(" ").join("+")
     let APIKEY = OMDB_API_KEY()
+    let thing;
     // const APIKEY = process.env.EXPO_OMDB_API_KEY
     return async dispatch => {
         try {
-            let response = await axios.get('http://www.omdbapi.com?apikey=' + APIKEY + `&s=${convertedValue}`+ `&page=${page}`)
+            if(type) {
+                thing = "movie"
+            } else {
+                thing = "series"
+            }
+            let response = await axios.get('http://www.omdbapi.com?apikey=' + APIKEY + `&s=${convertedValue}`+ `&page=${page}`+ `&type=${thing}`)
             dispatch({type: "SEARCHRESULTS", payload: response.data})
             // pageCap = parseInt(res.totalResults/10)+1)
             // .then((data) => {
@@ -201,6 +207,22 @@ export const search = (value, page) => {
             //     user: response.data
             // }
            
+        } catch (error) {
+            console.log("in error?", error)
+            dispatch({ type: "ERROR", payload: error })
+            return {
+                errors: error
+            }
+        }
+    }
+}
+
+export const singleSearch = (value) => {
+    let APIKEY = OMDB_API_KEY()
+    return async dispatch => {
+        try {
+            let response = await axios.get('http://www.omdbapi.com?apikey=' + APIKEY + `&i=${value}`)
+            dispatch({type: "SINGLESEARCHRESULTS", payload: response.data})    
         } catch (error) {
             console.log("in error?", error)
             dispatch({ type: "ERROR", payload: error })
@@ -273,6 +295,42 @@ export const checkIsLoggedIn = () => {
                 return {
                     errors: error
                 }
+            }
+        }
+    }
+}
+
+export const addToWatchList = (id,type, title, genre, plot, poster, length) => {
+    return async (dispatch) => {
+        try {
+            const response = await axios({
+                method: 'post',
+                url: 'http://localhost:3000/newshow',
+                data: {
+                    user: {
+                        id    
+                    },
+                    show: {
+                        type,
+                        title,
+                        genre,
+                        plot,
+                        poster,
+                        length
+                    }
+                }
+            })
+            // console.log("res", response)
+            dispatch({type: "ADDTOWATCHLIST", payload: response.data})
+            return {
+                user: response.data
+            }
+           
+        } catch (error) {
+            console.log("in error?", error)
+            dispatch({ type: "ERROR", payload: error })
+            return {
+                errors: error
             }
         }
     }

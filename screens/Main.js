@@ -13,12 +13,14 @@ const DiffStack = createStackNavigator()
 const ProfileStack = createStackNavigator()
 const SearchStack = createStackNavigator()
 const Tab = createMaterialBottomTabNavigator()
+const DetailsStack = createStackNavigator()
 
 //Screens
 import Home from "./Home"
 import Diff from "./Diff"
 import Search from "./Search"
 import Profile from "./Profile"
+import Details from "./Details"
 
 //Functions
 const mapStateToProps = (state) => ({
@@ -49,66 +51,67 @@ const HomeStackScreen = ({navigation, props}) => {
 }
   
 const DiffStackScreen = ({navigation}) => {
-    return (
-      <DiffStack.Navigator screenOptions={{
-        headerStyle: {
-          backgroundColor: "#e3cf17"
-        },
-        headerTintColor: "#fff",
-        headerTitleStyle:{
-          fontWeight: "bold"
-        }
-      }}>
-        <DiffStack.Screen name="Diff" component={Diff} options={{
-          title:"Diff",
-          headerLeft: () => (
-            <Icon.Button name="menu" size={25} backgroundColor="#e3cf17" onPress={() => {navigation.openDrawer()}}></Icon.Button>
-          )
-        }}/>
-      </DiffStack.Navigator>
-    )
+  return (
+    <DiffStack.Navigator screenOptions={{
+      headerStyle: {
+        backgroundColor: "#e3cf17"
+      },
+      headerTintColor: "#fff",
+      headerTitleStyle:{
+        fontWeight: "bold"
+      }
+    }}>
+      <DiffStack.Screen name="Diff" component={Diff} options={{
+        title:"Diff",
+        headerLeft: () => (
+          <Icon.Button name="menu" size={25} backgroundColor="#e3cf17" onPress={() => {navigation.openDrawer()}}></Icon.Button>
+        )
+      }}/>
+    </DiffStack.Navigator>
+  )
 }
 
 const ProfileStackScreen = ({navigation}) => {
-    return (
-      <ProfileStack.Navigator screenOptions={{
-        headerStyle: {
-          backgroundColor: "#ffa6b9"
-        },
-        headerTintColor: "#fff",
-        headerTitleStyle:{
-          fontWeight: "bold"
-        }
-      }}>
-        <ProfileStack.Screen name="Profile" component={Profile} options={{
-          title:"Profile",
-          headerLeft: () => (
-            <Icon.Button name="menu" size={25} backgroundColor="#ffa6b9" onPress={() => {navigation.openDrawer()}}></Icon.Button>
-          )
-        }}/>
-      </ProfileStack.Navigator>
-    )
+  return (
+    <ProfileStack.Navigator screenOptions={{
+      headerStyle: {
+        backgroundColor: "#ffa6b9"
+      },
+      headerTintColor: "#fff",
+      headerTitleStyle:{
+        fontWeight: "bold"
+      }
+    }}>
+      <ProfileStack.Screen name="Profile" component={Profile} options={{
+        title:"Profile",
+        headerLeft: () => (
+          <Icon.Button name="menu" size={25} backgroundColor="#ffa6b9" onPress={() => {navigation.openDrawer()}}></Icon.Button>
+        )
+      }}/>
+    </ProfileStack.Navigator>
+  )
 }
 
 const SearchStackScreen = ({navigation}) => {
-    return (
-      <SearchStack.Navigator screenOptions={{
-        headerStyle: {
-          backgroundColor: "#210eed"
-        },
-        headerTintColor: "#fff",
-        headerTitleStyle:{
-          fontWeight: "bold"
-        }
-      }}>
-        <SearchStack.Screen name="Search" component={Search} options={{
-          title:"Search",
-          headerLeft: () => (
-            <Icon.Button name="menu" size={25} backgroundColor="#210eed" onPress={() => {navigation.openDrawer()}}></Icon.Button>
-          )
-        }}/>
-      </SearchStack.Navigator>
-    )
+  return (
+    <SearchStack.Navigator screenOptions={{
+      headerStyle: {
+        backgroundColor: "#210eed"
+      },
+      headerTintColor: "#fff",
+      headerTitleStyle:{
+        fontWeight: "bold"
+      }
+    }}>
+      <SearchStack.Screen name="Search" component={Search} options={{
+        title:"Search",
+        headerLeft: () => (
+          <Icon.Button name="menu" size={25} backgroundColor="#210eed" onPress={() => {navigation.openDrawer()}}></Icon.Button>
+        )
+      }}/>
+      <SearchStack.Screen name="Details" component={Details} options={{title:"Details"}}/>
+    </SearchStack.Navigator>
+  )
 }
 
 const _Main = () => (

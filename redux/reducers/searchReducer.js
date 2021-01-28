@@ -1,7 +1,9 @@
 const initialState = {
     arrayResults: [],
     currentPage: 1,
-    pageCap: null
+    pageCap: null,
+    singleSearchId: null,
+    singleResults: [],
 }
 
 export const searchReducer = (state=initialState, action) => {
@@ -24,6 +26,11 @@ export const searchReducer = (state=initialState, action) => {
             }
         case 'CLEARSEARCH':
             return initialState
+        case 'SINGLESEARCHRESULTS':
+            return {
+                ...state,
+                singleResults: action.payload
+            }
         case 'UPDATEPAGE':
             if (state.currentPage < state.pageCap) {
                 return {
