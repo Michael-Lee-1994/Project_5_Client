@@ -21,6 +21,7 @@ import Diff from "./Diff"
 import Search from "./Search"
 import Profile from "./Profile"
 import Details from "./Details"
+import MyShow from "./MyShow"
 
 //Functions
 const mapStateToProps = (state) => ({
@@ -46,6 +47,7 @@ const HomeStackScreen = ({navigation, props}) => {
               <Icon.Button name="menu" size={25} backgroundColor="#009387" onPress={() => {navigation.openDrawer()}}></Icon.Button>
             )
           }}/>
+        <HomeStack.Screen name="MyShow" component={MyShow} options={{title:"MyShow"}}/>
       </HomeStack.Navigator>
     )
 }

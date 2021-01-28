@@ -14,10 +14,9 @@ const mapStateToProps = (state) => ({
   watchList: state.authReducer.watchList
 })
 
-// const Home = ({navigation, currentUser, watchedList, favorites, watchList}) => {
 class Home extends Component {
   componentDidMount() {
-    console.log("watchedList", this.props.watchedList)
+    // console.log("watchedList", this.props.watchedList)
   }
   state = {
     activeWatchedIndex: 0,
@@ -27,7 +26,7 @@ class Home extends Component {
 
   _renderWatchedItem = ({item, index}) => {
     return (
-      <Card style={styles.card} item={item} onPress={() => {}}>
+      <Card style={styles.card} item={item} onPress={() => {this.navigateMyShow(item)}}>
         <Card.Cover style={styles.image} source={{uri: `${item.media.poster}`}}/>
       </Card>
     );
@@ -35,7 +34,7 @@ class Home extends Component {
 
   _renderWatchItem = ({item, index}) => {
     return (
-      <Card style={styles.card} item={item} onPress={() => {}}>
+      <Card style={styles.card} item={item} onPress={() => {this.navigateMyShow(item)}}>
         <Card.Cover style={styles.image} source={{uri: `${item.media.poster}`}}/>
       </Card>
     );
@@ -43,11 +42,16 @@ class Home extends Component {
 
   _renderFavoriteItem = ({item, index}) => {
     return (
-      <Card style={styles.card} item={item} onPress={() => {}}>
+      <Card style={styles.card} item={item} onPress={() => {this.navigateMyShow(item)}}>
         <Card.Cover style={styles.image} source={{uri: `${item.media.poster}`}}/>
       </Card>
     );
   }
+
+  async navigateMyShow (item) {
+    //so instead of sending/setting props refactor to have a state of selected item and send that instead
+    this.props.navigation.navigate("MyShow", {item: item})
+  } 
 
   render() {
     return (

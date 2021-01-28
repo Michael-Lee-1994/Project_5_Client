@@ -62,6 +62,28 @@ export const authReducer = (state=initialState, action) => {
                 ...state,
                 watchedList: action.payload.user_shows
             }
+        case 'UPDATEFAVORITE':
+            let something = state.watchedList.map((show) => show.id !== action.payload.id ? show : action.payload)
+            let newFav = something.filter((show) => show.favorite === true)
+            console.log("fav", newFav)
+
+            return {
+                ...state,
+                watchedList: something,
+                favorites: newFav,
+                isLoggedIn: true,
+            }
+        case 'UPDATEWATCH':
+            let newsomething = state.watchedList.map((show) => show.id !== action.payload.id ? show : action.payload)
+            let newWatch = newsomething.filter((show) => show.currently_watching === true)
+            console.log("fav", newWatch)
+
+            return {
+                ...state,
+                watchedList: newsomething,
+                watchList: newWatch,
+                isLoggedIn: true,
+            }
         default:
             return state
     }

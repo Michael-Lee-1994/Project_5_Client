@@ -335,3 +335,58 @@ export const addToWatchList = (id,type, title, genre, plot, poster, length) => {
         }
     }
 }
+
+export const updateFavorite = (id, favorite) => {
+    return async (dispatch) => {
+        console.log("id", id)
+        try {
+            const response = await axios({
+                method: 'patch',
+                url: 'http://localhost:3000/user_shows/' + id,
+                data: {
+                    user_show: {
+                        favorite: !favorite
+                    }
+                }
+            })
+            dispatch({type: "UPDATEFAVORITE", payload: response.data})
+            return {
+                user: response.data
+            }
+           
+        } catch (error) {
+            console.log("in error?", error)
+            dispatch({ type: "ERROR", payload: error })
+            return {
+                errors: error
+            }
+        }
+    }
+}
+
+export const updateWatch = (id, watch) => {
+    return async (dispatch) => {
+        try {
+            const response = await axios({
+                method: 'patch',
+                url: 'http://localhost:3000/user_shows/' + id,
+                data: {
+                    user_show: {
+                        currently_watching: !watch
+                    }
+                }
+            })
+            dispatch({type: "UPDATEWATCH", payload: response.data})
+            return {
+                user: response.data
+            }
+           
+        } catch (error) {
+            console.log("in error?", error)
+            dispatch({ type: "ERROR", payload: error })
+            return {
+                errors: error
+            }
+        }
+    }
+}

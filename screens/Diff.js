@@ -6,7 +6,7 @@ const Diff = ({navigation}) => {
 
     return (
         <View style={styles.container}>
-            <Text>Hi!</Text>
+            <Text>IN DEVELOPMENT</Text>
             <StatusBar style="auto" />
             <Button title="go back" onPress={() => navigation.goBack()}/>
         </View>
