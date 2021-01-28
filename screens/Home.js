@@ -137,7 +137,7 @@ export default connect(mapStateToProps, { })(Home)
 const styles = StyleSheet.create({
   container: {
     // flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#fffded',
     alignItems: 'center',
     justifyContent: 'center',
     height: "203%",
@@ -145,9 +145,20 @@ const styles = StyleSheet.create({
   },
   card: {
     height: '100%',
-    width: '100%'
+    width: '100%',
+    shadowColor: '#02f0b7',
+    shadowOffset: {
+      width: 0,
+      height: 15
+    },
+    shadowOpacity: .99,
+    shadowRadius: 16,
+    elevation: 0,
+    // marginLeft: 25,
+    // marginRight: 25, 
   },
   watchedCarousel: {
+    // backgroundColor:"#e8e7df",
     position: "absolute",
     top: "0%",
     height: 400,

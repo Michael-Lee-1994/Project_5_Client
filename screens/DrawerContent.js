@@ -49,7 +49,7 @@ const _DrawerContent = (props) => {
                         </View>
                     </View>
 
-                    <View style={styles.row}>
+                    {/* <View style={styles.row}>
                         <View style={styles.section}>
                             <Paragraph style={[styles.paragraph, styles.caption]}>
                                 Number
@@ -58,7 +58,7 @@ const _DrawerContent = (props) => {
                                 thing
                             </Caption>
                         </View>
-                    </View>
+                    </View> */}
 
                     <Drawer.Section style={styles.drawerSection}>
                         <DrawerItem

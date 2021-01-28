@@ -337,7 +337,7 @@ const _SignUp = ({ navigation, onSignUp }) => {
                 <TouchableOpacity onPress={()=>{signUp()}}>
                     <View style={styles.button}>
                         <LinearGradient
-                            colors={['#08d4c4', '#01ab9d']}
+                            colors={['#c259ff', '#59ffca']}
                             style={styles.signIn}
                         >
                             <Animatable.Text 
@@ -362,7 +362,7 @@ export default SignUp;
 const styles = StyleSheet.create({
     container: {
       flex: 1, 
-      backgroundColor: '#009387'
+      backgroundColor: '#c259ff'
     },
     header: {
         flex: 1,
@@ -379,9 +379,10 @@ const styles = StyleSheet.create({
         paddingVertical: 30
     },
     text_header: {
-        color: '#fff',
+        color: '#59ffca',
+        fontFamily: "EuphemiaUCAS-Italic",
         fontWeight: 'bold',
-        fontSize: 30
+        fontSize: 40
     },
     text_footer: {
         color: '#05375a',
@@ -413,7 +414,8 @@ const styles = StyleSheet.create({
     },
     textSign: {
         fontSize: 18,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color: "white"
     },
     textPrivate: {
         flexDirection: 'row',

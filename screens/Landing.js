@@ -16,11 +16,11 @@ const Landing = ({ navigation }) => {
                 animation="bounceInDown"
                 delay={1000}
                 // iterationCount="infinite"
-                source={require('../assets/icon.png')}
+                source={require('../assets/g.png')}
                 style={styles.logo}
                 resizeMode="stretch"
                 />
-                <Text style={styles.header_text}> Glister </Text>
+                <Animatable.Text animation="swing" delay={1000} style={styles.header_text}> Glister </Animatable.Text>
 
             </View>
             <Animatable.View 
@@ -34,7 +34,7 @@ const Landing = ({ navigation }) => {
                 <TouchableOpacity onPress={()=>navigation.navigate("LoginScreen")}>
                     <View style={styles.button}>
                         <LinearGradient
-                            colors={['#08d4c4', '#01ab9d']}
+                            colors={['#c259ff', '#59ffca']}
                             style={styles.signIn}
                         >
                             <Animatable.Text 
@@ -65,7 +65,7 @@ const height_logo = height * 0.28;
 const styles = StyleSheet.create({
   container: {
     flex: 1, 
-    backgroundColor: '#009387'
+    backgroundColor: '#c259ff',
   },
   header: {
       flex: 2,
@@ -76,9 +76,10 @@ const styles = StyleSheet.create({
     marginTop: 10, 
     justifyContent: 'center',
     alignItems: 'center',
-    fontSize: 40,
+    fontSize: 60,
     fontWeight: "bold",
-    color: '#ffffff'
+    color: '#59ffca',
+    fontFamily: "EuphemiaUCAS-Italic"
   },
   footer: {
       flex: 1,
@@ -93,12 +94,16 @@ const styles = StyleSheet.create({
       height: height_logo
   },
   title: {
-      color: '#05375a',
+      fontFamily: "EuphemiaUCAS-Bold",
+      color: '#47d1a5',
       fontSize: 30,
       fontWeight: 'bold'
   },
   text: {
-      color: 'grey',
+      fontFamily: "EuphemiaUCAS",
+      color: '#47d1a5',
+      fontWeight: 'bold',
+      fontSize: 20,
       marginTop: 10
   },
   button: {

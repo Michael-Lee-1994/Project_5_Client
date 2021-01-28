@@ -126,7 +126,7 @@ export default Login;
 const styles = StyleSheet.create({
     container: {
       flex: 1, 
-      backgroundColor: '#009387'
+      backgroundColor: '#c259ff'
     },
     header: {
         flex: 1,
@@ -143,9 +143,10 @@ const styles = StyleSheet.create({
         paddingVertical: 30
     },
     text_header: {
-        color: '#fff',
+        color: '#59ffca',
+        fontFamily: "EuphemiaUCAS-Italic",
         fontWeight: 'bold',
-        fontSize: 30
+        fontSize: 40
     },
     text_footer: {
         color: '#05375a',

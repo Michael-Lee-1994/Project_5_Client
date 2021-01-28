@@ -323,7 +323,7 @@ const updateSecureConfirmationTextEntry = () => {
       <TouchableOpacity onPress={()=>{update()}}>
         <View style={styles.button}>
             <LinearGradient
-                colors={['#08d4c4', '#01ab9d']}
+                colors={['#ffa6b9', '#00fc6d']}
                 style={styles.btn}
             >
               <Animatable.Text 
@@ -340,7 +340,7 @@ const updateSecureConfirmationTextEntry = () => {
       <TouchableOpacity onPress={()=>{del()}}>
         <View style={styles.button}>
             <LinearGradient
-                colors={['#08d4c4', '#01ab9d']}
+                colors={['#ffa6b9', '#00fc6d']}
                 style={styles.btn}
             >
               <Animatable.Text 
@@ -391,7 +391,8 @@ const styles = StyleSheet.create({
   },
   textSign: {
     fontSize: 20,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    color: "white"
   },
   btn: {
     width: 150,

@@ -43,7 +43,7 @@ const _NewApp = ({ loading, navigation, isLoading, logged, checkIsLoggedIn }) =>
         setTimeout(async () => {
             await isLoading(false)
             checkIsLoggedIn()
-        }, 2000)
+        }, 2500)
     }, []);
     
     if( loading ) {
