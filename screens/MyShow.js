@@ -23,12 +23,12 @@ const {poster, title, length, plot, genre} = route.params.item.media
 const {current_episode, currently_watching, favorite, reviews, id} = route.params.item
     
 const favoritePatch = async (id, favorite) => {
-    console.log("int patch")
+    // console.log("int patch")
     await updateFavorite(id, favorite)
 }
 
 const watchPatch = async (id, currently_watching) => {
-    console.log("int patch")
+    // console.log("int patch")
     await updateWatch(id, currently_watching)
 }
 

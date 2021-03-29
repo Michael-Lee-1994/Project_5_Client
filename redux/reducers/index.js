@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux'
 import { authReducer } from './authReducer'
 import { searchReducer } from './searchReducer'
-// import { addShowReducer } from './addShowReducer'
+import { searchAnimeReducer } from './searchAnimeReducer'
 
 const rootReducer =  combineReducers({
    authReducer,
    searchReducer,
-   // addShowReducer
+   searchAnimeReducer
 })
 
 export default rootReducer

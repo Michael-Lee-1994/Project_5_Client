@@ -9,7 +9,7 @@ import { onUserLogin, onSignUp } from "../redux/actions";
 
 //Helpers
 const HomeStack = createStackNavigator()
-const DiffStack = createStackNavigator()
+const AnimeStack = createStackNavigator()
 const ProfileStack = createStackNavigator()
 const SearchStack = createStackNavigator()
 const Tab = createMaterialBottomTabNavigator()
@@ -17,7 +17,7 @@ const DetailsStack = createStackNavigator()
 
 //Screens
 import Home from "./Home"
-import Diff from "./Diff"
+import Anime from "./Anime"
 import Search from "./Search"
 import Profile from "./Profile"
 import Details from "./Details"
@@ -52,9 +52,9 @@ const HomeStackScreen = ({navigation, props}) => {
     )
 }
   
-const DiffStackScreen = ({navigation}) => {
+const AnimeStackScreen = ({navigation}) => {
   return (
-    <DiffStack.Navigator screenOptions={{
+    <AnimeStack.Navigator screenOptions={{
       headerStyle: {
         backgroundColor: "#e3cf17"
       },
@@ -63,13 +63,13 @@ const DiffStackScreen = ({navigation}) => {
         fontWeight: "bold"
       }
     }}>
-      <DiffStack.Screen name="Diff" component={Diff} options={{
-        title:"Diff",
+      <AnimeStack.Screen name="Anime" component={Anime} options={{
+        title:"Anime",
         headerLeft: () => (
           <Icon.Button name="menu" size={25} backgroundColor="#e3cf17" onPress={() => {navigation.openDrawer()}}></Icon.Button>
         )
       }}/>
-    </DiffStack.Navigator>
+    </AnimeStack.Navigator>
   )
 }
 
@@ -146,10 +146,10 @@ const _Main = () => (
     }}
   />
   <Tab.Screen
-    name="Diff"
-    component={DiffStackScreen}
+    name="Anime"
+    component={AnimeStackScreen}
     options={{
-      tabBarLabel: 'Diff',
+      tabBarLabel: 'Anime',
       tabBarColor: '#e3cf17',
       tabBarIcon: ({ color, size= 25 }) => (
         <Icon name="ios-library" color={color} size={size} />

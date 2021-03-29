@@ -6,6 +6,8 @@ import Carousel from 'react-native-snap-carousel'
 import { connect } from 'react-redux';
 import {  } from "../redux/actions";
 
+//clean up code
+
 const mapStateToProps = (state) => ({
   authReducer: state.authReducer,
   currentUser: state.authReducer.currentUser,

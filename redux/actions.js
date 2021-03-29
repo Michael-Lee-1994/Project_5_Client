@@ -390,3 +390,73 @@ export const updateWatch = (id, watch) => {
         }
     }
 }
+
+export const searchAnime = (value, page) => {
+    let convertedValue = value.split(" ").join("+")
+    return async dispatch => {
+         console.log("page",page)
+        try {
+            if(page) {
+                console.log("on next page")
+                let response = await axios.get(page)
+                dispatch({type: "SEARCHRESULTSANIME", payload: response.data})
+            } else {
+                let response = await axios.get('https://kitsu.io/api/edge/anime?filter%5Btext%5D=' + `${convertedValue}` + '&page%5Blimit%5D=10&page%5Boffset%5D=0')
+                dispatch({type: "SEARCHRESULTSANIME", payload: response.data})
+            }
+           
+        } catch (error) {
+            console.log("in error?", error)
+            dispatch({ type: "ERROR", payload: error })
+            return {
+                errors: error
+            }
+        }
+    }
+}
+
+export const singleSearchAnime = (value) => {
+    return async dispatch => {
+        try {
+            let response = await axios.get('https://kitsu.io/api/edge/anime?filter%5Bid%5D=' + value)
+            dispatch({type: "SINGLESEARCHRESULTSANIME", payload: response.data})    
+        } catch (error) {
+            console.log("in error?", error)
+            dispatch({ type: "ERROR", payload: error })
+            return {
+                errors: error
+            }
+        }
+    }
+}
+
+export const updatePageAnime = (currentSearchLink) => {
+    return async dispatch => {
+        try {
+        
+            dispatch({type: "UPDATEPAGEANIME"})
+
+        } catch (error) {
+            dispatch({ type: "ERROR", payload: error })
+            return {
+                errors: error
+            }
+        }
+
+    }
+}
+
+export const clearSearchAnime = () => {
+    return async dispatch => {
+        try {
+            console.log("IN CLEAR")
+            dispatch({type: "CLEARSEARCHANIME"})
+        } catch (error) {
+            console.log("in error?", error)
+            dispatch({ type: "ERROR", payload: error })
+            return {
+                errors: error
+            }
+        }
+    }
+}
